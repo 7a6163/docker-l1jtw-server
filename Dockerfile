@@ -1,15 +1,12 @@
-# L1J-TW Server Dockerfile
+FROM java:openjdk-7-alpine
+MAINTAINER Zac
 
-FROM java:openjdk-7-jdk
-MAINTAINER Tony Pai <tonypai@ifalo.com.tw>
-
-RUN apt-get update
-RUN apt-get install -y mysql-client
+RUN apk add --no-cache bash mysql-client
 
 WORKDIR /data
 VOLUME /data
 
-COPY L1J-TW_3.50c /data
+COPY L1J-TW_3.80c /data
 
 EXPOSE 2000
 

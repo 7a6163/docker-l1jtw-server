@@ -1,0 +1,25 @@
+version: '2'
+services:
+  db:
+    image: mysql:5.6
+    environment:
+      MYSQL_ROOT_PASSWORD: evV2BubA3ZtXchrLuGCthfMfDx8yTr
+    volumes:
+      - db_data:/var/lib/mysql
+    expose:
+      - "3306"
+
+  l1j:
+    build:
+      context: .
+    ports:
+      - 2000:2000/tcp
+    environment:
+      DB_HOST: db
+      DB_PWD: evV2BubA3ZtXchrLuGCthfMfDx8yTr
+      RATE: 10
+      ENCHANT_CHANCE: 40
+    links:
+      - 'db:db'
+volumes:
+  db_data:
