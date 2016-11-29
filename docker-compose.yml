@@ -19,6 +19,8 @@ services:
       DB_PWD: evV2BubA3ZtXchrLuGCthfMfDx8yTr
       RATE: 10
       ENCHANT_CHANCE: 40
+    volumes:
+      - ./L1J-TW_3.80c:/data
     links:
       - 'db:db'
 volumes:
