@@ -1,12 +1,11 @@
 version: '2'
 services:
   db:
-    ports:
-      - 3306:3306/tcp
-    image: mysql:5.6
+    image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: evV2BubA3ZtXchrLuGCthfMfDx8yTr
-      MYSQL_DATABASE: l1jdb
+    expose:
+      - "3306"
     volumes:
       - db_data:/var/lib/mysql
 
@@ -18,11 +17,13 @@ services:
     environment:
       DB_HOST: db
       DB_PWD: evV2BubA3ZtXchrLuGCthfMfDx8yTr
-      RATE: 10
-      ENCHANT_CHANCE: 40
     depends_on:
       - db
     links:
       - 'db:db'
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./L1J-TW_3.80c:/data
 volumes:
   db_data:
